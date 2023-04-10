@@ -22,7 +22,7 @@
   tasks:
     - name: Install dependent packages
       package:
-        name: "{{ package_map[ansible_distribution] }}"
+        name: "{{ package_name }}"
         state: present
       loop: "{{ package_map[ansible_distribution] }}"
       loop_control:
