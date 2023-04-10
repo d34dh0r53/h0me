@@ -2,15 +2,25 @@
   hosts: localhost
   become: no
   gather_facts: yes
+  vars:
+    package_map:
+      centos:
+        - curl
+        - development tools
+        - cmake
 
+      ubuntu:
+        - curl
+        - build-essential
+        - cmake
   tasks:
     - name: Install dependent packages
       package:
-        name:
-          - curl
-          - build-essential
-          - cmake
+        name: "{{ package_map[ansible_distribution] }}"
         state: present
+      loop: "{{ package_map[ansible_distribution] }}"
+      loop_control:
+        loop_var: package_name
       become: yes
       become_user: root
 
