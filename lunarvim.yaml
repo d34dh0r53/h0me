@@ -1,0 +1,36 @@
+- name: LunarVIM
+  hosts: target-servers
+  remote_user: ansible
+  become: false
+  gather_facts: yes
+
+  tasks:
+    - name: Install Homebrew
+      shell: |
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      args:
+        creates: "/home/linuxbrew/.linuxbrew"
+      environment:
+        PATH: "{{ ansible_env.PATH }}"
+        NONINTERACTIVE: 1
+
+    - name: Make brew_path executable
+      file:
+        path: /usr/bin/brew_path
+        owner: root
+        group: root
+        mode: 0666
+        state: touch
+      become: true
+      remote_user: root
+
+    - name: Create brew_path script
+      blockinfile:
+        path: /usr/bin/brew_path
+        block: |
+          test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+          test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
+          echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
+        become: true
+        remote_user: root
