@@ -37,6 +37,9 @@
       environment:
         PATH: "{{ ansible_env.PATH }}"
 
+    - debug:
+      var: "{{ ansible_env }}"
+
     - name: Install Rust Packages
       community.general.cargo:
         name: "{{ item }}"
@@ -47,4 +50,5 @@
         - starship
         - exa
         - bottom
+
 
