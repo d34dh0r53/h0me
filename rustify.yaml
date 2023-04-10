@@ -37,14 +37,6 @@
       environment:
         PATH: "{{ ansible_env.PATH }}"
 
-    - name: Create a symbolic link
-      ansible.builtin.file:
-        src: /root/.cargo/bin/cargo
-        dest: /usr/local/bin/cargo
-        owner: root
-        group: root
-        state: link
-
     - name: Install Rust Packages
       community.general.cargo:
         name: "{{ item }}"
