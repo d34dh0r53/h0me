@@ -13,6 +13,12 @@
         - curl
         - build-essential
         - cmake
+
+      Fedora:
+        - curl
+        - development tools
+        - cmake
+
   tasks:
     - name: Install dependent packages
       package:
