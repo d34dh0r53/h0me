@@ -15,9 +15,8 @@
         - cmake
 
       Fedora:
-        - "curl"
-        - "development tools"
-        - "cmake"
+        - curl
+        - cmake
 
   tasks:
     - name: Install dependent packages
