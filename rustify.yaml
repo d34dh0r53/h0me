@@ -48,7 +48,6 @@
       community.general.cargo:
         name: "{{ item }}"
         state: present
-        path: /usr/local
       with_items:
         - bat
         - starship
