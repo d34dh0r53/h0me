@@ -41,8 +41,8 @@
         PATH: "{{ ansible_env.PATH }}"
 
     - name: Some Thangs
-      debug:
-      var: "{{ ansible_env }}"
+      ansible.builtin.debug:
+        var: "{{ ansible_env }}"
 
     - name: Install Rust Packages
       community.general.cargo:
