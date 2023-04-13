@@ -40,7 +40,8 @@
       environment:
         PATH: "{{ ansible_env.PATH }}"
 
-    - debug:
+    - name: Some Thangs
+      debug:
       var: "{{ ansible_env }}"
 
     - name: Install Rust Packages
