@@ -19,7 +19,7 @@
         path: /usr/bin/brew_path
         owner: root
         group: root
-        mode: 0666
+        mode: 0755
         state: touch
       become: true
       remote_user: root
