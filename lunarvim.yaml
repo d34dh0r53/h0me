@@ -45,3 +45,10 @@
       community.general.homebrew:
         name: asdf
         state: present
+
+    - name: Add asdf and completions to .bashrc
+      blockinfile:
+        path: "{{ ansible_env.HOME }}/.bashrc"
+        block: |
+          . "$HOME/.asdf/asdf.sh"
+          . "$HOME/.asdf/completions/asdf.bash"
