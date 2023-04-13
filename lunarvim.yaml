@@ -34,3 +34,10 @@
           echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
       become: true
       remote_user: root
+
+    - name: Install Neovim
+      community.general.homebrew:
+        name: neovim
+        path: /usr/local/bin
+        state: present
+
