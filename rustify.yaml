@@ -36,7 +36,7 @@
       shell: |
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
       args:
-        creates: "{{ ansible_env.HOME }}/.cargo/bin/rusup"
+        creates: "{{ ansible_env.HOME }}/.cargo/bin/rustup"
       environment:
         PATH: "{{ ansible_env.PATH }}"
 
@@ -54,5 +54,6 @@
         - starship
         - exa
         - bottom
+        - ripgrep
 
 
