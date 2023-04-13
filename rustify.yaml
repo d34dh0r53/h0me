@@ -20,6 +20,7 @@
         - cmake
         - git
         - gcc
+        - util-linux-user
 
   tasks:
     - name: Install dependent packages
@@ -50,5 +51,6 @@
         - exa
         - bottom
         - ripgrep
+        - nushell
 
 
