@@ -21,6 +21,7 @@
         - git
         - gcc
         - util-linux-user
+        - openssl-devel
 
   tasks:
     - name: Install dependent packages
