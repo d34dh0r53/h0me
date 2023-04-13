@@ -6,8 +6,9 @@
     package_map:
       centos:
         - curl
-        - development tools
         - cmake
+        - git
+        - gcc
 
       ubuntu:
         - curl
@@ -17,6 +18,8 @@
       Fedora:
         - curl
         - cmake
+        - git
+        - gcc
 
   tasks:
     - name: Install dependent packages
