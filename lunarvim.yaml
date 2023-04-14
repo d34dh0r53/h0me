@@ -15,6 +15,10 @@
     asdf_nodejs_versions:
       - 19.8.1
 
+    asdf_global_version:
+      - python 3.11.3
+      - nodejs 19.8.1
+
     package_map:
       centos:
         - openssl-devel
@@ -122,3 +126,10 @@
       loop: "{{ asdf_nodejs_versions }}"
       loop_control:
         loop_var: asdf_nodejs_version
+
+    - name: Set global versions for nodejs and python
+      command: |
+        asdf global {{ asdf_global }}
+      loop: "{{ asdf_global_version }}"
+      loop_control:
+        loop_var: asdf_global
