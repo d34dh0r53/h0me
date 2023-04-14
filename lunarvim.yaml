@@ -52,3 +52,14 @@
         block: |
           . "$HOME/.asdf/asdf.sh"
           . "$HOME/.asdf/completions/asdf.bash"
+
+    - name: Install asdf plugins for python and node
+      shell: |
+        asdf plugin add {{ asdf_plugin }}
+      args:
+        creates: "{{ ansible_env.HOME }}/.asdf/plugins/{{ asdf_plugin }}"
+      asdf_plugin:
+        - python
+        - nodejs
+      loop_var: asdf_plugin
+
