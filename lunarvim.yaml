@@ -7,6 +7,8 @@
     asdf_plugins:
       - python
       - nodejs
+    asdf_python_versions:
+      - 3.11.3
 
   tasks:
     - name: Install Homebrew
