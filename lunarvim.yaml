@@ -3,6 +3,10 @@
   remote_user: ansible
   become: false
   gather_facts: yes
+  vars:
+    asdf_plugins:
+      - python
+      - nodejs
 
   tasks:
     - name: Install Homebrew
@@ -58,8 +62,6 @@
         asdf plugin add {{ asdf_plugin }}
       args:
         creates: "{{ ansible_env.HOME }}/.asdf/plugins/{{ asdf_plugin }}"
-      asdf_plugin:
-        - python
-        - nodejs
-      loop_var: asdf_plugin
-
+      loop: "{{ asdf_plugins }}"
+      loop_control:
+        loop_var: asdf_plugin
