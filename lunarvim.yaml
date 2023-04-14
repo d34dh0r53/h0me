@@ -87,11 +87,9 @@
         state: present
 
     - name: Add asdf and completions to .bashrc
-      blockinfile:
-        path: "{{ ansible_env.HOME }}/.bashrc"
-        block: |
-          . "$HOME/.asdf/asdf.sh"
-          . "$HOME/.asdf/completions/asdf.bash"
+      shell: |
+        echo -e "\n. \"$(brew --prefix asdf)/libexec/asdf.sh\"" >> {{ ansible_env.HOME }}/.bashrc
+        echo -e "\n. \"$(brew --prefix asdf)/etc/bash_completion.d/asdf.bash\"" >> {{ ansible_env.HOME }}/.bashrc
 
     - name: Install asdf plugins for python and node
       shell: |
