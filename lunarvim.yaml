@@ -9,6 +9,7 @@
       - nodejs
     asdf_python_versions:
       - 3.11.3
+      - 2.7.18
     package_map:
       centos:
         - openssl-devel
@@ -99,3 +100,12 @@
       loop: "{{ asdf_plugins }}"
       loop_control:
         loop_var: asdf_plugin
+
+    - name: Install python version(s) with asdf
+      shell: |
+        asdf install python {{ asdf_python_version }}
+      args:
+        creates: "{{ ansible_env.HOME }}/.asdf/installs/{{ asdf_python_version }}"
+      loop: "{{ asdf_python_versions }}"
+      loop_control:
+        loop_var: asdf_python_version
