@@ -1,4 +1,4 @@
-- name: Rustify
+- name: h0me
   hosts: localhost
   become: no
   gather_facts: yes
@@ -22,6 +22,8 @@
         - gcc
         - util-linux-user
         - openssl-devel
+        - zlib-devel
+        - libffi-devel
 
   tasks:
     - name: Install dependent packages
@@ -53,5 +55,6 @@
         - bottom
         - ripgrep
         - nu
+        - fd-find
 
 
