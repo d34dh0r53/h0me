@@ -32,6 +32,7 @@
         - readline-devel
         - sqlite-devel
         - xz-devel
+        - patch
 
   tasks:
     - name: Install dependent packages
