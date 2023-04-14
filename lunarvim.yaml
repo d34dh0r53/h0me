@@ -9,8 +9,40 @@
       - nodejs
     asdf_python_versions:
       - 3.11.3
+    package_map:
+      centos:
+        - openssl-devel
+        - zlib-devel
+        - libffi-devel
+        - bzip2-devel
+        - ncurses-devel
+        - readline-devel
+        - sqlite-devel
+        - xz-devel
+
+      ubuntu:
+
+      Fedora:
+        - openssl-devel
+        - zlib-devel
+        - libffi-devel
+        - bzip2-devel
+        - ncurses-devel
+        - readline-devel
+        - sqlite-devel
+        - xz-devel
 
   tasks:
+    - name: Install dependent packages
+      package:
+        name: "{{ package_name }}"
+        state: present
+      loop: "{{ package_map[ansible_distribution] }}"
+      loop_control:
+        loop_var: package_name
+      become: yes
+      become_user: root
+ 
     - name: Install Homebrew
       shell: |
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

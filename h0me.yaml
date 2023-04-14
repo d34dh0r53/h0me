@@ -21,14 +21,6 @@
         - git
         - gcc
         - util-linux-user
-        - openssl-devel
-        - zlib-devel
-        - libffi-devel
-        - bzip2-devel
-        - ncurses-devel
-        - readline-devel
-        - sqlite-devel
-        - xz-devel
 
   tasks:
     - name: Install dependent packages
